@@ -23,7 +23,7 @@ async def login_user(user: UserLogIn, request: Request, response: Response) -> U
     user_out: UserOut | None = await login_users(user.email_address, user.password, request.app.mongodb)
     if user_out is None :
         raise HTTPException(status_code=401, detail="User does not exists")
-    token: str = create_access_token(user_out.dict())
+    token: str = create_access_token(user_out)
     response.set_cookie(key="x-id-token", value=token)
     return user_out
 
