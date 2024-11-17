@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Socket.IO chat</title>
+    <script type="text/JavaScript" src="https://MomentJS.com/downloads/moment.js"></script>
+    <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
+    <link rel="stylesheet" href="/static/css/chat.css">
+</head>
+
+<body>
+    <div class="chat-area">
+        <div id="head"></div>
+        <div id="messages"></div>
+        <form id="form" action="">
+            <input id="input" autocomplete="off" /><button>Send</button>
+        </form>
+    </div>
+</body>
+<script src="/static/js/chat.js"></script>
+<script>
+    const otherUser = JSON.parse(decodeHTML("{{reciver}}"));
+    const currUser = JSON.parse(decodeHTML("{{user}}"));
+    chatSetup()
+</script>
+
+</html>
