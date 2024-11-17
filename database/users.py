@@ -19,8 +19,9 @@ async def login_users(email: EmailStr, password: str, mongodb) -> UserOut | None
         user_in_db = await mongodb["users"].find_one({'email_address': email }, {'_id': False})
     except Exception as e:
         print(f'Login user not found:: {e}')
-    if user_in_db is not None:
-        return verify_password(password, user_in_db['hashed_password'])
+    if user_in_db is not None and verify_password(password, user_in_db['hashed_password']):
+        user_in_db['hashed_password'] = None
+        return user_in_db
     else:
         return None
 
